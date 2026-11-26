@@ -1,0 +1,7 @@
+{
+  "name": "dev-kit",
+  "version": "0.1.0",
+  "description": "Diff summary skill, read-only code reviewer, safety and format hooks",
+  "author": { "name": "Your Name" },
+  "license": "MIT"
+}
