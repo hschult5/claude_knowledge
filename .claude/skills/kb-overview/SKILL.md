@@ -24,6 +24,7 @@ For every `*.md` file directly in the knowledge base root, **except `README.md`*
    `1. What & when` · `2. How it works` · `3. Guide` · `4. Reference` · `5. Examples` · `6. Best practices` · `7. Security` · `8. Checklist`.
    A heading counts if it starts with the number and the name (e.g. `## 3. Guide: set it up` counts as Guide).
 4. Line count.
+5. Frontmatter: the file must start with `---` and contain `aliases:` and `tags:` (used by the Obsidian vault). Missing → warning.
 
 Then:
 - Glob `examples/**/*` (files only) and group them by subfolder (`agents`, `hooks`, `skills`, `plugin`).
@@ -45,6 +46,7 @@ Answer in the user's language. Format:
 
 **Hinweise**
 - <file>: fehlende Abschnitte: 5. Examples, 7. Security
+- <file>: Frontmatter (aliases/tags) fehlt
 - <file>: nicht in der README-Tabelle verlinkt
 - README verlinkt <file>, die Datei fehlt
 ```

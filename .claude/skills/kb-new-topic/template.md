@@ -1,3 +1,12 @@
+---
+aliases:
+  - "<Short topic name>"
+  - "<Alternative name>"
+tags:
+  - claude-code
+  - claude-code/<mechanism|integration|workflow>
+---
+
 # <Topic title>
 
 *Part of the [Claude Code knowledge base](README.md). Every topic file uses the same sections: What & when · How it works · Guide · Reference · Examples · Best practices · Security · Checklist.*

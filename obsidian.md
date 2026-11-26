@@ -1,3 +1,13 @@
+---
+aliases:
+  - "Obsidian + Claude"
+  - "Obsidian Claude Integration"
+tags:
+  - claude-code
+  - claude-code/integration
+  - obsidian
+---
+
 # Obsidian + Claude
 
 *Part of the [Claude Code knowledge base](README.md). Every topic file uses the same sections: What & when · How it works · Guide · Reference · Examples · Best practices · Security · Checklist.*
@@ -61,6 +71,21 @@ Add `.obsidian/workspace*.json` and `.trash/` to `.gitignore`.
 5. Try: "List notes in `Inbox/` older than 30 days and propose where each belongs. Don't move anything yet."
 
 Tip: to use the vault from **another** project (e.g. as reference while coding), add it with `/add-dir "C:\Users\<you>\Documents\MyVault"` or `permissions.additionalDirectories`.
+
+### Bring a git repo of Markdown docs into the vault (junction)
+
+The other direction: a docs repo (like this knowledge base) should show up in your vault and graph **without a second copy**.
+
+1. Create a directory junction inside the vault (no admin rights needed):
+   ```powershell
+   New-Item -ItemType Junction -Path "<vault>\Claude Knowledge" -Target "E:\Work\claude_knowledge"
+   ```
+2. Obsidian indexes it like a normal folder. Dot-folders (`.git`, `.claude`) are hidden automatically.
+3. Relative Markdown links (`[hooks.md](hooks.md)`) appear as edges in the graph; keep them instead of `[[wikilinks]]` if the repo is also read on GitHub.
+4. Add frontmatter `aliases` + `tags` to each file so you can link `[[Hooks]]` from your own notes and filter the graph by tag (`tag:#claude-code`).
+5. Git stays in the repo folder: commit/pull there (or with the Obsidian Git plugin pointed at that repo). Don't also sync the junction folder with Obsidian Sync/OneDrive, or you get two sync systems fighting.
+
+Caveats: junctions are Windows-only (on macOS/Linux use a symlink, `ln -s`); Obsidian may notice changes made outside it with a short delay. **Remove only the link** with `cmd /c rmdir "<vault>\Claude Knowledge"`. Deleting the folder from inside Obsidian or with PowerShell 5.1 `Remove-Item -Recurse` can delete the **target's files**. With git + GitHub you can recover, but uncommitted changes would be lost.
 
 ### B. Add the official Obsidian CLI
 

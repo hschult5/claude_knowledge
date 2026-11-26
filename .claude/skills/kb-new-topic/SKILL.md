@@ -31,6 +31,8 @@ Read `README.md` and two existing topic files, preferably `hooks.md` (a Claude C
 Use [template.md](template.md) as the skeleton. Rules:
 
 - **English**, like all other topic files.
+- **Frontmatter first** (the knowledge base is linked into an Obsidian vault): 2 `aliases` (short name + alternative) and `tags`: always `claude-code`, plus `claude-code/mechanism` (a Claude Code feature), `claude-code/integration` (an external tool) or `claude-code/workflow`; add `security` if security is a main theme. Check existing aliases with Grep so none clash.
+- Links between topic files stay **relative Markdown links** (`[hooks.md](hooks.md)`), not `[[wikilinks]]`: Obsidian's graph picks them up and GitHub still renders them.
 - **All 8 sections, numbered exactly**: `## 1. What & when` … `## 8. Checklist` (subtitle after a colon is fine: `## 3. Guide: set it up`).
 - Header: the standard italic "Part of the knowledge base" line, plus a "Written <today's date> from <sources>" line.
 - Concrete over generic: real commands, JSON/YAML, file paths, copy-paste examples.

@@ -1,3 +1,12 @@
+---
+aliases:
+  - "Claude Code Knowledge Base"
+  - "Claude Knowledge"
+tags:
+  - claude-code
+  - claude-code/index
+---
+
 # Claude Code: Knowledge Base
 
 *Written 2026-11-25/26 from the official docs at code.claude.com. Features move fast; check the docs if something behaves differently.*
@@ -42,6 +51,18 @@ Source of truth: [`.claude/skills/`](.claude/skills/) in this repo. A copy lives
 ```powershell
 Copy-Item -Recurse -Force .claude\skills\kb-* $HOME\.claude\skills\
 ```
+
+## Using it in Obsidian
+
+The repo is linked into an Obsidian vault with a **directory junction** (no copy): the vault folder `Claude Knowledge` *is* this repo. Edit in Obsidian or here, commit and pull from here; both sides always see the same files.
+
+```powershell
+New-Item -ItemType Junction -Path "<vault>\Claude Knowledge" -Target "<path-to>\claude_knowledge"
+```
+
+- Every topic file has frontmatter `aliases` (so `[[Hooks]]`, `[[MCP]]`, `[[Subagents]]` work from your own notes) and `tags` (`#claude-code`, `#claude-code/mechanism`, `#claude-code/integration`, `#claude-code/workflow`, `#security`).
+- Links between files stay relative Markdown links: Obsidian's graph shows them, GitHub renders them. This README is the hub node.
+- Remove the link with `cmd /c rmdir "<vault>\Claude Knowledge"` (removes only the junction). **Don't** delete the folder from Obsidian or with `Remove-Item -Recurse`: that deletes the repo's files. Details: [obsidian.md](obsidian.md).
 
 ---
 
